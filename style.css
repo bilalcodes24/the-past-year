@@ -1,0 +1,117 @@
+:root{
+  --navy-0:#080A18;
+  --navy-1:#11152D;
+  --navy-2:#18152F;
+  --violet-0:#211A3D;
+  --lilac-1:#B9A3E8;
+  --lilac-2:#D8CFF2;
+  --offwhite:#F4F1F7;
+  --muted:rgba(244,241,247,0.76);
+  --panel-glow:rgba(185,163,232,0.12);
+  --line:rgba(216,207,242,0.18);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background:
+    radial-gradient(circle at top, rgba(185,163,232,0.14), transparent 28%),
+    linear-gradient(180deg,var(--navy-0),var(--navy-1) 35%, var(--violet-0));
+  color:var(--offwhite);
+  -webkit-font-smoothing:antialiased;
+}
+.panel{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:48px 20px}
+.center-screen{align-items:center;justify-content:center}
+
+/* Landing */
+.landing-inner{max-width:780px;text-align:center}
+.title{font-family: Georgia, 'Times New Roman', serif;letter-spacing:4px;margin:0;font-size:36px}
+.subtitle{margin:8px 0 18px;color:var(--muted);font-weight:600}
+.meta{margin:8px 0 24px;color:var(--muted)}
+.btn{background:transparent;border:1px solid rgba(255,255,255,0.08);color:var(--offwhite);padding:10px 18px;border-radius:6px;cursor:pointer;font-weight:600}
+.btn:focus{outline:2px solid rgba(185,163,232,0.18)}
+.scroll-indicator{margin-top:28px;display:inline-block}
+.scroll-indicator .dot{width:8px;height:8px;background:var(--lilac-2);border-radius:999px;display:block;margin:0 auto 6px}
+.scroll-indicator .line{width:2px;height:40px;background:linear-gradient(180deg,rgba(255,255,255,0.06),transparent);display:block;margin:0 auto}
+
+/* Content layout */
+.content{position:relative}
+.timeline{position:fixed;left:12px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;padding:8px;z-index:30;opacity:0.2;pointer-events:none}
+.timeline .marker{width:12px;height:12px;border-radius:999px;display:flex;align-items:center;justify-content:center;color:transparent;font-size:0;line-height:0;border:1px solid rgba(216,207,242,0.2);background:rgba(255,255,255,0.04);transform:scale(0.8)}
+.timeline .marker.active{background:linear-gradient(180deg,var(--lilac-1),var(--lilac-2));box-shadow:0 0 14px rgba(185,163,232,0.32);transform:scale(1)}
+
+.memory-transition{padding:120px 20px 60px;min-height:48vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(8,10,24,0.2),rgba(8,10,24,0.5));}
+.transition-lines{display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center;color:var(--offwhite);opacity:0;transform:translateY(16px);transition:opacity 900ms ease, transform 900ms ease;}
+.transition-lines.visible{opacity:1;transform:translateY(0)}
+.transition-lines span{font-family:Georgia, 'Times New Roman', serif;font-size:clamp(1.4rem,2.6vw,2.4rem);letter-spacing:0.04em;color:rgba(244,241,247,0.87)}
+.transition-lines span:nth-child(2){color:rgba(216,207,242,0.9)}
+.transition-lines span:nth-child(3){font-size:clamp(1rem,1.8vw,1.4rem);letter-spacing:0.02em;color:rgba(244,241,247,0.7)}
+
+#memories{max-width:980px;margin:0 auto;padding:48px 20px 80px}
+.memory{position:relative;display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 0 18px;margin:0 auto 8px;max-width:460px;min-height:0}
+.memory::before{content:"";position:absolute;inset:-4px 10px auto 10px;height:1px;background:linear-gradient(90deg,transparent,rgba(216,207,242,0.18),transparent);opacity:0.5}
+.memory .count{display:none}
+.memory .meta-line{color:var(--muted);letter-spacing:2px;font-weight:700;font-size:11px;text-transform:uppercase}
+.memory .image-wrap{width:100%;max-width:420px;display:block;border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.02);box-shadow:0 18px 40px rgba(8,10,24,0.38);border:1px solid rgba(216,207,242,0.08)}
+.memory img{width:100%;height:auto;border-radius:10px;display:block;object-fit:contain;filter:blur(0px);transition:transform 500ms ease,filter 700ms ease,opacity 500ms ease;transform:translateY(8px) scale(0.995);opacity:0}
+.memory .caption{width:100%;max-width:420px;color:var(--offwhite);font-size:15px;line-height:1.5;opacity:0.9;text-align:left}
+.memory.in-view img{opacity:1;transform:translateY(0) scale(1)}
+
+.memory.cute .image-wrap{max-width:390px}
+.memory.funny .image-wrap{max-width:420px}
+.memory.core{max-width:700px;padding:28px 0 26px;margin:18px auto 22px;gap:12px;transition:background 900ms ease;background:linear-gradient(180deg,rgba(185,163,232,0.06),rgba(17,21,45,0.2));border-radius:20px;border:1px solid rgba(185,163,232,0.13);box-shadow:0 22px 44px rgba(8,10,24,0.28)}
+.memory.core .image-wrap{max-width:620px;box-shadow:0 26px 54px rgba(17,21,45,0.42)}
+.memory.core .caption{max-width:620px;font-size:17px}
+.memory.core img{filter:blur(6px) grayscale(0.02);transform:scale(0.985)}
+.memory.core.in-view img{filter:blur(0px);transform:scale(1)}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;animation:none!important}
+}
+
+/* Music toggle */
+.music-toggle{position:fixed;right:18px;bottom:18px;background:rgba(17,21,45,0.7);border:1px solid rgba(185,163,232,0.18);color:var(--offwhite);width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:60;box-shadow:0 8px 18px rgba(8,10,24,0.28)}
+.music-toggle.playing{background:linear-gradient(180deg,var(--lilac-1),var(--lilac-2));color:var(--navy-0)}
+
+.letter-section{padding:80px 20px 80px;display:flex;justify-content:center;align-items:flex-start;opacity:0;transform:translateY(28px);transition:opacity 1000ms ease, transform 1000ms ease;}
+.letter-section.visible{opacity:1;transform:translateY(0)}
+.letter-paper{width:min(100%, 720px);background:#F3EFE8;color:#2a2323;border:1px solid rgba(33,26,61,0.04);box-shadow:0 10px 22px rgba(8,10,24,0.12);padding:clamp(28px,5vw,56px);border-radius:18px;position:relative;}
+.letter-paper::before{content:"";position:absolute;inset:18px 18px auto 18px;height:1px;background:linear-gradient(90deg,transparent,rgba(33,26,61,0.04),transparent)}
+
+.letter-date,.letter-greeting,.letter-signoff{font-family:Georgia, 'Times New Roman', serif;}
+.letter-date{font-size:0.82rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(29,23,37,0.7);margin-bottom:34px;}
+.letter-greeting{font-size:clamp(1.7rem,3vw,2.3rem);font-weight:500;margin:0 0 28px;color:#1d1725;line-height:1.2;}
+.letter-body{font-family:'Cormorant Garamond', Georgia, 'Times New Roman', serif;font-style:italic;font-size:clamp(1.4rem,2.2vw,2rem);line-height:1.95;color:#231d2d;white-space:normal;}
+.letter-body p{margin:0 0 1.3em;}
+.letter-signoff{font-family:Georgia, 'Times New Roman', serif;font-size:1.1rem;line-height:1.6;color:#1d1725;margin-top:32px;}
+
+/* Quiet UI when reading the letter */
+.letter-mode .timeline{opacity:0 !important}
+.letter-mode .music-toggle{opacity:0.6;transform:scale(0.96);transition:opacity 400ms ease, transform 400ms ease}
+.letter-mode .music-toggle.playing{background:linear-gradient(180deg,var(--lilac-1),var(--lilac-2));color:var(--navy-0)}
+
+.final-screen{padding:180px 20px 200px;text-align:center;min-height:60vh;display:flex;align-items:center;justify-content:center}
+.final-inner .date{letter-spacing:0.18em;color:var(--muted);font-size:0.7rem;margin-bottom:20px}
+.final-inner h1{font-family:Georgia, 'Times New Roman', serif;font-size:clamp(2rem,5vw,4rem);letter-spacing:0.15em;margin:0;font-weight:400}
+
+/* Responsive */
+@media (max-width:800px){
+  .timeline{display:none}
+  .title{font-size:28px}
+  .landing-inner{padding:0 12px}
+  #memories{padding:24px 14px 50px}
+  .memory{max-width:100%;padding:10px 0 16px}
+  .memory .image-wrap,.memory .caption,.memory.core .caption{max-width:100%}
+  .memory.core{padding:22px 0 20px}
+
+  .memory-transition{padding:96px 18px 44px;min-height:36vh}
+  .transition-lines{gap:12px}
+  .letter-section{padding:52px 18px 72px}
+  .letter-paper{padding:28px 20px 24px;border-radius:14px}
+  .letter-date{margin-bottom:24px;letter-spacing:0.12em}
+  .letter-greeting{margin-bottom:22px}
+  .letter-body{font-size:clamp(1.25rem,5.4vw,1.8rem);line-height:1.7}
+}

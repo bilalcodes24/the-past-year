@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>THE PAST YEAR — from my side of the screen</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="app">
+    <header id="landing" class="panel center-screen">
+      <div class="landing-inner">
+        <h1 class="title">THE PAST YEAR</h1>
+        <p class="subtitle">The best 365 days of my life</p>
+        <p class="meta">Here's some moments I kept</p>
+        <button id="beginBtn" class="btn">VIEW</button>
+        <div class="scroll-indicator" aria-hidden>
+          <span class="dot"></span>
+          <span class="line"></span>
+        </div>
+      </div>
+    </header>
+
+    <main id="content" class="content" aria-live="polite">
+      <aside id="timeline" class="timeline" aria-hidden="false"></aside>
+      <section id="memories"></section>
+
+      <section id="memoryTransition" class="memory-transition" aria-live="polite">
+        <div class="transition-lines">
+          <span>So many times you made me feel special.</span>
+          <span>This past year.</span>
+          <span>And now, the part I couldn't put into screenshots.</span>
+        </div>
+      </section>
+
+      <section id="letterSection" class="letter-section" aria-label="Letter section">
+        <div class="letter-paper">
+          <div class="letter-date">17 August 2026</div>
+
+          <p class="letter-greeting">My sweet girl,</p>
+
+          <div class="letter-body">
+            <p>I'm going to be honest, if you asked me on the 17th of August last year, if I saw us the way we are right now, I would've been skeptical.</p>
+            <p>But here we are, a year later.</p>
+            <p>I know I say this often, but every single day of the past year, I have woken up loving you more than I did the day before.</p>
+            <p>Sitting with these screenshots for the past few days, looking at them daily, I realised how special you make me feel.</p>
+            <p>And the fact I get to love you every single day. I'm the luckiest man on earth.</p>
+            <p>I regret every single time that I hurt you. I cannot count the times you've made my life better just by being in it. I hope you always stay with me.</p>
+            <p>Here's to every single year for the rest of our lives.</p>
+          </div>
+
+          <p class="letter-signoff">Yours,<br>Bilal</p>
+        </div>
+      </section>
+
+      <section id="final" class="panel final-screen">
+        <div class="final-inner">
+          <div class="date">17 AUGUST 2026</div>
+          <h1>I LOVE YOU</h1>
+        </div>
+      </section>
+    </main>
+
+    <button id="musicToggle" class="music-toggle" aria-pressed="false" title="Toggle music">♪</button>
+
+    <audio id="bgAudio" src="assets/music.mp3" preload="auto" loop></audio>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
